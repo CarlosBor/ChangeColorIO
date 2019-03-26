@@ -15,8 +15,8 @@
 <script>
  var socket = io.connect();
  $("div#colorSwap").click(function(e) {
-   socket.emit("colorSwap", /*This should do nothing*/ $(this).find("#msg_text").val(), function() {
-     $("div#colorSwap").css("background-color", "red");
+   socket.emit("colorSwap", $(this).css("background-color"), function() {
+     //$("div#colorSwap").css("background-color", "red");
    });
  });
  

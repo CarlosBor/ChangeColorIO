@@ -24,7 +24,11 @@ function response(req, res) {
 
 io.on("connection", function(socket) {
     socket.on("colorSwap", function(color, callback) {
-        color = "red";
+        if (color == "rgb(255, 0, 0)"){
+            color = "blue";
+        }else if (color == "rgb(0, 0, 255)"){
+            color = "red";
+        }
         io.sockets.emit("executeChange", color);
         callback();
     });
