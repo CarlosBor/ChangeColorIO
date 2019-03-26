@@ -10,18 +10,19 @@
 <script type="text/javascript" src="/socket.io/socket.io.js"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <body>
-    <div id="colorSwap"></div>
+    <div id="colorSwap" swapStatus="red"></div>
 </body>
 <script>
  var socket = io.connect();
  $("div#colorSwap").click(function(e) {
-   socket.emit("colorSwap", $(this).css("background-color"), function() {
+   socket.emit("colorSwap", $(this).attr("swapStatus"), function() {
      //$("div#colorSwap").css("background-color", "red");
    });
  });
  
- socket.on("executeChange", function(color){
-   $("div#colorSwap").css("background-color", color);
+ socket.on("executeChange", function(status){
+    $("div#colorSwap").css("background-color", status);
+    $("div#colorSwap").attr("swapStatus", status);
 });
 
 </script>

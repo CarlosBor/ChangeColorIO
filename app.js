@@ -23,13 +23,13 @@ function response(req, res) {
 }
 
 io.on("connection", function(socket) {
-    socket.on("colorSwap", function(color, callback) {
-        if (color == "rgb(255, 0, 0)"){
-            color = "blue";
-        }else if (color == "rgb(0, 0, 255)"){
-            color = "red";
+    socket.on("colorSwap", function(status, callback) {
+        if (status == "red"){
+            status = "blue";
+        }else if (status == "blue"){
+            status = "red";
         }
-        io.sockets.emit("executeChange", color);
+        io.sockets.emit("executeChange", status);
         callback();
     });
 });
