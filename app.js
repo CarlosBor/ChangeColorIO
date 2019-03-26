@@ -2,7 +2,7 @@ var app = require('http').createServer(response);
 var fs = require('fs');
 var io = require('socket.io')(app);
 
-app.listen(3000);
+app.listen(process.env.PORT || 5000)
 console.log("App running…");
 
 function response(req, res) {
